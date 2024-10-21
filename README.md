@@ -28,7 +28,10 @@ Necesitamos satisfacer tres dependencias además de tener instalado Python 3:
 Abrimos powershell como administrador y ejecutamos:
 
 <pre><code>pip3 install pytubefix ffmpeg pathvalidate</pre></code>
-Luego debemos descargar la última versión de ffmpeg para Windows, podeis descargarlo desde <a href="https://github.com/BtbN/FFmpeg-Builds/releases">esta página</a>. Si no sabeis cómo instalarlo, en este <a href="https://www.youtube.com/watch?app=desktop&v=JR36oH35Fgg&ab_channel=Koolac">vídeo</a> lo explican bastante bien.
+Luego debemos descargar la última versión de ffmpeg para Windows, podéis descargarlo desde <a href="https://github.com/BtbN/FFmpeg-Builds/releases">esta página</a>. Si no sabeis cómo instalarlo, en este <a href="https://www.youtube.com/watch?app=desktop&v=JR36oH35Fgg&ab_channel=Koolac">vídeo</a> lo explican bastante bien.
+
+Por último ejecutamos nuestro programa como cualquier script en python, abriendo una powershell en la carpeta y escribiendo:
+<pre><code>python ./main.py</code></pre>
 
 #### Ubuntu
 La instalación es sencilla, solo teneis que ejecutar los siguientes comandos:
