@@ -47,8 +47,12 @@ def video_audio_mux(path_audiosource, path_imagesource, out_video_path):
 
 #Cambiamos a directorio descarga youtube
 def cambio_directorio():
+    carpeta_necesaria = "youtube"
     ruta = os.getcwd()
-    nuevaruta = os.path.join(ruta, "youtube")
+    if carpeta_necesaria not in os.listdir() or not os.path.isdir(carpeta_necesaria): #Comprobamos si existe la carpeta "youtube"
+        print("No existe carpeta: " + carpeta_necesaria + ". Creando...")
+        os.mkdir(carpeta_necesaria)
+    nuevaruta = os.path.join(ruta, carpeta_necesaria)
     os.chdir(nuevaruta)
 
 #Sanitizamos nombre archivo final
