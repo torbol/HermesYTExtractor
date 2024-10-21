@@ -37,4 +37,4 @@ Aquí la instalación es mucho más sencilla, solo teneis que ejecutar los sigui
 sudo apt install python3 ffmpeg
 pip install pytubefix</code></pre>
 
-Y listo, solo hay que irse a la carpeta de nuestro script y ejecutarlo como cualquier script de python :)
+Y listo, nos vamos a la carpeta de nuestro script y lo ejecutamos como cualquier programa de python :)
