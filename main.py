@@ -1,5 +1,6 @@
 from pytubefix import YouTube
 from pytubefix.cli import on_progress
+from pathvalidate import sanitize_filename
 import ffmpeg
 import os
 
@@ -9,7 +10,13 @@ def descarga_video_audio(enlacevideo):
     print(yt.title) #Mostramos el título del vídeo
 
     #Obtenemos las pistas de video que tiene youtube y cogemos la primera, la de más alta resolución
-    yv = yt.streams.get_highest_resolution(progressive=False)
+    try:
+        yv = yt.streams.get_highest_resolution(progressive=False)
+    except:
+        print("Ha ocurrido un error descargando por método tradicional, probando método alternativo...")
+        yt.streaming_data #Con esto refrescamos los datos de streaming y aparecerán ya los streams que hay (sin error por checkavailability). Esta línea soluciona problema con algunos enlaces.
+        yv = yt.streams.get_highest_resolution(progressive=False)
+
     if yv == None:
         print("No se ha encontrado ninguna pista de video con máxima calidad, se descargará por defecto una que ya incluya el audio, normalmente en 360p")
         yv = yt.streams.get_highest_resolution()
@@ -39,14 +46,22 @@ def video_audio_mux(path_audiosource, path_imagesource, out_video_path):
     ffmpeg.output(audio, video, out_video_path, vcodec='copy', acodec='copy').run() #En lugar de acodec='copy' usamos aac para que pueda leerlo sin instalar paquetes de codecs el reproductor de windows
 
 #Cambiamos a directorio descarga youtube
-def cambiodirectorio():
+def cambio_directorio():
     ruta = os.getcwd()
-    nuevaruta = ruta + "/youtube"
+    nuevaruta = os.path.join(ruta, "youtube")
     os.chdir(nuevaruta)
 
+#Sanitizamos nombre archivo final
+def sanitize_ending_filename(archivo_final_f):
+    archivo_final_sanitized_f = sanitize_filename(archivo_final_f)
+    print(archivo_final_sanitized_f)
+    return archivo_final_sanitized_f #Devolvemos el nombre del archivo formateado para poder guardarse en un archivo en sistemas Windows
+
+
 #main
-cambiodirectorio() #Cambiamos a la carpeta youtube para hacer las descargas
+cambio_directorio() #Cambiamos a la carpeta youtube para hacer las descargas
 url = input("Introduce la url del video >") #Solicitamos la URL al usuario
 
-nombrevideo, nombreaudio, archivofinal = descarga_video_audio(url) #Descargamos audio y video
-video_audio_mux("./" + nombreaudio, "./" + nombrevideo, "./" + "output_" + archivofinal) #Lo juntamos en un único archivo de video (.mp4, webm...)
+nombre_video, nombre_audio, archivo_final = descarga_video_audio(url) #Descargamos audio y video
+archivo_final_formateado = sanitize_ending_filename(archivo_final) #Damos un formato aceptable por explorador de Windows al archivo
+video_audio_mux(os.path.join(os.getcwd(), nombre_audio), os.path.join(os.getcwd(), nombre_video), os.path.join(os.getcwd(), "output_" + archivo_final_formateado)) #Lo juntamos en un único archivo de video (.mp4, webm...)

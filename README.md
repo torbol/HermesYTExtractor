@@ -16,18 +16,25 @@ https://github.com/user-attachments/assets/f6bbdb36-687d-4c05-8814-bdf60c48a5f2
 
 
 
-### Manual - Solo Linux
-Necesitamos satisfacer dos dependencias además de tener instalado Python 3:
+### Manual
+Necesitamos satisfacer tres dependencias además de tener instalado Python 3:
 <ul>
   <li>ffmpeg</li>
+  <li>pathvalidate</li>
   <li>Última versión de <b>pytubefix</b></li>
 </ul>
+
+#### Windows
+Abrimos powershell como administrador y ejecutamos:
+
+<pre><code>pip3 install pytubefix ffmpeg pathvalidate</pre></code>
+Luego debemos descargar la última versión de ffmpeg para Windows, podeis descargarlo desde <a href="https://github.com/BtbN/FFmpeg-Builds/releases">esta página</a>. Si no sabeis cómo instalarlo, en este <a href="https://www.youtube.com/watch?app=desktop&v=JR36oH35Fgg&ab_channel=Koolac">vídeo</a> lo explican bastante bien.
 
 #### Ubuntu
 La instalación es sencilla, solo teneis que ejecutar los siguientes comandos:
 
 <pre><code>sudo apt update && sudo apt upgrade
 sudo apt install python3 ffmpeg
-pip install pytubefix</code></pre>
+pip install pytubefix pathvalidate</code></pre>
 
 Y listo, nos vamos a la carpeta de nuestro script y lo ejecutamos como cualquier programa de python :)
