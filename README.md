@@ -37,7 +37,7 @@ Por último ejecutamos nuestro programa como cualquier script en python, abriend
 La instalación es sencilla, solo teneis que ejecutar los siguientes comandos:
 
 <pre><code>sudo apt update && sudo apt upgrade
-sudo apt install python3 ffmpeg
+sudo apt install python3
 pip install pytubefix pathvalidate ffmpeg</code></pre>
 
 Y listo, nos vamos a la carpeta de nuestro script y lo ejecutamos como cualquier programa de python :)
