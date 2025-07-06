@@ -1,4 +1,8 @@
-﻿# HermesYTExtractor
+<strike><h1>PROYECTO PARALIZADO</h1></strike>
+> [!IMPORTANT]  
+> Debido a la falta de tiempo y al aumento de medidas implementadas recientemente por YouTube para impedir el uso de bloqueadores de publicidad y restringir la descarga de vídeos, se ha decidido **suspender temporalmente el desarrollo de este proyecto**. 
+ 
+ # HermesYTExtractor
 Programa para descargar vídeos de YT, principalmente se descargará el vídeo y el códec de audio con mayor calidad, ambos por separado, luego los unirá en un único archivo conservando las 3 pistas (archivo de video, audio, video y audio).
 
 ## Como se instala
